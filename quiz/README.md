@@ -1,10 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React Quiz Component Dynamically Creating a Quiz based on JSON data
 
-## Available Scripts
+## Documentation
 
-In the project directory, you can run:
 
-### `yarn start`
+### `JSON Data`
+
+const Quiz = {<br/>
+  name: "HTML/CSS Basics",<br/>
+  id: 'htmlQuiz',<br/>
+  questions: [<br/>
+    {<br/>
+      component: "input",<br/>
+      properties: {<br/>
+        type: "text",<br/>
+        id: "28472",<br/>
+        title: "question1",<br/>
+        question: "What would you type to signify to the browser that you are creating an HTML5 document type",<br/>
+        placeholder: "ANSWER",<br/>
+      }<br/>
+    },<br/>
+  ]<br/>
+}<br/>
+
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
