@@ -10,14 +10,12 @@ import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator.
 class Quiz extends React.Component {
   constructor(props) {
     super(props);
-
     let answersObjectLength = Quiz_Data.questions.length;
     let answerArray = [];
     let i;
     for (i = 0; i < answersObjectLength; i++) {
       answerArray.push({ value: i, isAnswered: false })
     };
-
     this.state = {
       quizInfo: Quiz_Data,
       response: {
@@ -26,14 +24,11 @@ class Quiz extends React.Component {
         status: [0]
       }
     }
-
-    console.log(this.state);
   }
 
   componentDidMount() {
     document.getElementById("nameForm").addEventListener("submit", (e) => {
       e.preventDefault();
-
       let result = document.getElementById('nameInput').value;
       let answersCopy = JSON.parse(JSON.stringify(this.state.response.answers));
       let statusCopy = JSON.parse(JSON.stringify(this.state.response.status));
@@ -51,7 +46,7 @@ class Quiz extends React.Component {
   getCompletedValue = (array) => {
     let count = 0;
     array.forEach(e => {
-      if (e.isAnswered === true){
+      if (e.isAnswered === true) {
         count++;
       }
     });
@@ -72,19 +67,15 @@ class Quiz extends React.Component {
         status: statusCopy
       }
     })
-
-    if(Quiz_Data.questions.length === statusCopy[0]) {
+    if (Quiz_Data.questions.length === statusCopy[0]) {
       let quiz = document.getElementById('submitCompletedQuiz');
-      quiz.addEventListener("submit", (e)=>{
+      quiz.addEventListener("submit", (e) => {
         e.preventDefault();
         console.log("Quiz Submitted")
       })
       quiz.firstChild.disabled = false;
     }
-
   }
-
-
 
   render() {
     return (
@@ -92,29 +83,30 @@ class Quiz extends React.Component {
         <h1>{this.state.quizInfo.name}</h1>
         {
           this.state.response.status.map((s) => {
-            return <ProgressIndicator value={s}  numOfQuestions= {Quiz_Data.questions.length} key={s} />
+            return <ProgressIndicator value={s} numOfQuestions={Quiz_Data.questions.length} key={s} />
           })
         }
+        <div className="form-step-container">
+          <form id="nameForm">
+            <input id="nameInput" type="text" placeholder="First name Last name"></input>
+            <button type="submit">Submit</button>
+          </form>
+          {
+            this.state.quizInfo.questions.map((q, i) => {
+              if (q.component === "input" && q.properties.type === "checkbox") {
+                return <InputCheckbox {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
+              } else if (q.component === "input") {
+                return <Input {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
+              } else {
+                return <Select {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
+              }
+            })
+          }
 
-        <form id="nameForm">
-          <input id="nameInput" type="text" placeholder="First name Last name"></input>
-          <button type="submit">Submit</button>
-        </form>
-        {
-          this.state.quizInfo.questions.map((q, i) => {
-            if (q.component === "input" && q.properties.type === "checkbox") {
-              return <InputCheckbox {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-            } else if (q.component === "input") {
-              return <Input {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-            } else {
-              return <Select {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-            }
-          })
-        }
-
-        <form id="submitCompletedQuiz">
-          <button type="submit" disabled>Turn In Quiz</button>
-        </form>
+          <form id="submitCompletedQuiz">
+            <button type="submit" disabled>Turn In Quiz</button>
+          </form>
+        </div>
       </div>
     )
   }
