@@ -1,0 +1,13 @@
+div.quiz {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10vw;
+  min-height:105vh;
+}
+
+div.quiz > form {
+  margin-top: 12px;
+  border: 1px black solid;
+  border-radius: 5px;
+  padding: 10px 10px;
+}
