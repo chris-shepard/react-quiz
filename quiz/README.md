@@ -5,22 +5,22 @@ React Quiz Component Dynamically Creating a Quiz based on JSON data
 
 ### `JSON Data`
 
-const Quiz = {<br/>
-  name: "HTML/CSS Basics",<br/>
-  id: 'htmlQuiz',<br/>
-  questions: [<br/>
-    {<br/>
-      component: "input",<br/>
-      properties: {<br/>
-        type: "text",<br/>
-        id: "28472",<br/>
-        title: "question1",<br/>
-        question: "What would you type to signify to the browser that you are creating an HTML5 document type",<br/>
-        placeholder: "ANSWER",<br/>
-      }<br/>
-    },<br/>
-  ]<br/>
-}<br/>
+const Quiz = {
+  name: "HTML/CSS Basics",
+  id: 'htmlQuiz',
+  questions: [
+    {
+      component: "input",
+      properties: {
+        type: "text",
+        id: "28472",
+        title: "question1",
+        question: "What would you type to signify to the browser that you are creating an HTML5 document type",
+        placeholder: "ANSWER",
+      }
+    },
+  ]
+}
 
 
 Runs the app in the development mode.<br />
