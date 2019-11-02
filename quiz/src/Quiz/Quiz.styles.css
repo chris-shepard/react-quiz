@@ -2,7 +2,6 @@ div.quiz {
   display: flex;
   flex-direction: column;
   padding: 10px 5vw;
-  min-height:105vh;
 }
 
 div.form-step-container {
@@ -26,15 +25,8 @@ div.form-step-container > form {
   padding: 10px 10px;
   background-color: rgb(43, 43, 172);
 }
-
-input, select, button {
-  background-color: rgb(83, 167, 196);
-  border: none;
-  border-radius: 2px;
-}
-
-input:-internal-autofill-selected {
-  background-color: rgb(83, 167, 196) !important;
+form > div.select {
+  margin-bottom: 1rem;
 }
 
 button[type= "submit"] {

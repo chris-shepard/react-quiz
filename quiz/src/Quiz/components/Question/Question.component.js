@@ -50,10 +50,10 @@ class Question extends React.Component {
                 <form id={qNum} key={id}>
                     <span>{question}</span><br></br>{
                         options.map((o, i) => {
-                            return <div key={`${o.value}Input`}><input type="checkbox" value={o.value} key={`${o.value}checkValue`} id={`${qNum}a${i}`}></input>{o.content}</div>
+                            return <div className="checkbox" key={`${o.value}Input`}><input type="checkbox" value={o.value} key={`${o.value}checkValue`} id={`${qNum}a${i}`}></input>{o.content}</div>
                         })
                     }<br></br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="button">Submit</button>
                 </form>)
         } else if (this.props.component === "input") {
             const {
@@ -62,12 +62,12 @@ class Question extends React.Component {
 
 
             return (
-                <form id={qNum} >
+                <form id={qNum} className="control" >
                     <label htmlFor={title}>
                         {question}<br></br>
-                        <input name={title} {...otherInputProps} id={`${this.props.qNum}a`}></input>
+                        <input name={title} {...otherInputProps} id={`${this.props.qNum}a`} className="input"></input>
                     </label><br></br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="button">Submit</button>
                 </form>
             )
         } else if (this.props.component === "select") {
@@ -77,15 +77,18 @@ class Question extends React.Component {
 
             return (
                 <form id={this.props.qNum} >
-                    <label htmlFor={title}>{question}</label><br></br>
-                    <select name={title} id={`${id}Select`}>
-                        {
-                            options.map((o, i) => {
-                                return <option value={o.value} key={`${title}Option${i}`} id={`${this.props.qNum}a${i}`}>{o.content}</option>
-                            })
-                        }
-                    </select><br></br>
-                    <button type="submit">Submit</button>
+
+                    <label htmlFor={title}>{question}</label>
+                    <div className="select">
+                        <select name={title} id={`${id}Select`}>
+                            {
+                                options.map((o, i) => {
+                                    return <option value={o.value} key={`${title}Option${i}`} id={`${this.props.qNum}a${i}`}>{o.content}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" className="button">Submit</button>
                 </form>
             )
         } else {
