@@ -23,14 +23,14 @@ class InputCheckbox extends React.Component {
 
   render() {
     const {
-      id, question, options
+      id, question, options, qNum
     } = this.props;
 
     return (
-      <form id={this.props.qNum} key={id}>
+      <form id={qNum} key={id}>
         <span>{question}</span><br></br>{
           options.map((o, i) => {
-            return <div key={`${o.value}Input`}><input type="checkbox" value={o.value} key={`${o.value}checkValue`} id={`${this.props.qNum}a${i}`}></input>{o.content}</div>
+            return <div key={`${o.value}Input`}><input type="checkbox" value={o.value} key={`${o.value}checkValue`} id={`${qNum}a${i}`}></input>{o.content}</div>
           })
         }<br></br>
         <button type="submit">Submit</button>

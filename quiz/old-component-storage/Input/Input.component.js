@@ -20,7 +20,7 @@ class Input extends React.Component {
 
 
     return (
-      <form id={this.props.qNum} >
+      <form id={qNum} >
         <label htmlFor={title}>
           {question}<br></br>
           <input name={title} {...otherInputProps} id={`${this.props.qNum}a`}></input>

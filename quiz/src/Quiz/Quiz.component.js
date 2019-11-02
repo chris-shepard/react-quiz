@@ -1,10 +1,8 @@
 import React from 'react';
 import Quiz_Data from './Quiz.data';
 import './Quiz.styles.css';
-import Input from './components/Input/Input.component';
-import InputCheckbox from './components/InputCheckbox/InputCheckbox.component';
-import Select from './components/Select/Select.component';
 import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator.component';
+import Question from './components/Question/Question.component';
 
 
 class Quiz extends React.Component {
@@ -24,6 +22,7 @@ class Quiz extends React.Component {
         status: [0]
       }
     }
+    console.log(this.state);
   }
 
   componentDidMount() {
@@ -71,7 +70,7 @@ class Quiz extends React.Component {
       let quiz = document.getElementById('submitCompletedQuiz');
       quiz.addEventListener("submit", (e) => {
         e.preventDefault();
-        console.log("Quiz Submitted")
+        console.log(this.state)
       })
       quiz.firstChild.disabled = false;
     }
@@ -91,15 +90,10 @@ class Quiz extends React.Component {
             <input id="nameInput" type="text" placeholder="First name Last name"></input>
             <button type="submit">Submit</button>
           </form>
+          
           {
             this.state.quizInfo.questions.map((q, i) => {
-              if (q.component === "input" && q.properties.type === "checkbox") {
-                return <InputCheckbox {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-              } else if (q.component === "input") {
-                return <Input {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-              } else {
-                return <Select {...q.properties} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} />
-              }
+              return <Question component={q.component} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} {...q.properties}/>
             })
           }
 

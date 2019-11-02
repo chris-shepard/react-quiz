@@ -49,6 +49,7 @@ const Quiz = {
       component: "select",
       properties: {
         id: '233243933938383',
+        type: null,
         title: 'css-selectors',
         question: "Which selector has the most specificity:",
         options: [
@@ -64,6 +65,7 @@ const Quiz = {
       component: "select",
       properties: {
         id:"77283",
+        type: null,
         title: "screen-size",
         question: "On a mobile phone in portrait mode, with a screen width of 300 pixels, an element has a css rule of margin: 10vw 12px 1% 1rem; Which side of the element will have the largest margin?",
         options: [
