@@ -79,21 +79,25 @@ class Quiz extends React.Component {
   render() {
     return (
       <div className="quiz">
-        <h1>{this.state.quizInfo.name}</h1>
-        {
-          this.state.response.status.map((s) => {
-            return <ProgressIndicator value={s} numOfQuestions={Quiz_Data.questions.length} key={s} />
-          })
-        }
+
+
         <div className="form-step-container">
+          <div className="text-center">
+            <h1>{this.state.quizInfo.name}</h1>
+              {
+                this.state.response.status.map((s) => {
+                  return <ProgressIndicator value={s} numOfQuestions={Quiz_Data.questions.length} key={s} />
+                })
+              }
+          </div>
           <form id="nameForm">
             <input id="nameInput" type="text" placeholder="First name Last name"></input>
             <button type="submit">Submit</button>
           </form>
-          
+
           {
             this.state.quizInfo.questions.map((q, i) => {
-              return <Question component={q.component} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} {...q.properties}/>
+              return <Question component={q.component} key={q.properties.id} qNum={`q${i}`} onQuestionCompleted={this.submitQuiz} {...q.properties} />
             })
           }
 

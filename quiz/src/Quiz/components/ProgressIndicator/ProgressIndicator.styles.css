@@ -1,0 +1,12 @@
+div.progress-bar {
+    border-radius: 100%;
+    padding: 5px 5px;
+    width: 10vmax;
+    height: 10vmax;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+

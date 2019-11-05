@@ -15,6 +15,14 @@ div.form-step-container {
   background-color: darkblue;
 }
 
+div.form-step-container > div.text-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 div.form-step-container > form {
   display: flex;
   flex-direction: column;
@@ -31,4 +39,8 @@ form > div.select {
 
 button[type= "submit"] {
   max-width: 5rem;
+}
+
+select {
+  width: 100%;
 }
